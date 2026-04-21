@@ -6,7 +6,7 @@
     <title>Dance Trend Digest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -22,17 +22,16 @@
             padding-bottom: 60px;
         }
         
-        .top-bar {
+        .animated-bar {
             height: 4px;
             background: linear-gradient(90deg, #ff2d7b, #a855f7, #06b6d4, #ff2d7b);
             background-size: 200% 100%;
-            animation: gradientShift 3s ease infinite;
+            animation: gradientFlow 3s linear infinite;
         }
         
-        @keyframes gradientShift {
+        @keyframes gradientFlow {
             0% { background-position: 0% 0%; }
-            50% { background-position: 100% 0%; }
-            100% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
         }
         
         .container {
@@ -54,12 +53,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         .date {
+            color: #a1a1aa;
             font-size: 0.9rem;
-            color: #71717a;
             font-weight: 500;
         }
         
@@ -70,17 +69,17 @@
         h2 {
             font-family: 'Syne', sans-serif;
             font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 20px;
             color: #fafafa;
-            font-weight: 700;
         }
         
         .sound-card {
-            background: #111115;
-            border: 1px solid #27272a;
+            background: #0f0f14;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 16px;
+            border: 1px solid #1a1a24;
             transition: all 0.3s ease;
         }
         
@@ -92,23 +91,23 @@
         .sound-card h3 {
             font-family: 'Syne', sans-serif;
             font-size: 1.1rem;
+            font-weight: 600;
             color: #fafafa;
             margin-bottom: 8px;
-            font-weight: 600;
+        }
+        
+        .sound-card .creator {
+            color: #06b6d4;
+            font-weight: 500;
+            margin-bottom: 8px;
         }
         
         .stats {
             display: flex;
-            gap: 16px;
-            margin: 12px 0;
+            gap: 15px;
+            margin: 10px 0;
             font-size: 0.85rem;
             color: #a1a1aa;
-        }
-        
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
         
         .tags {
@@ -120,51 +119,88 @@
         
         .tag {
             padding: 4px 12px;
-            border-radius: 6px;
+            border-radius: 20px;
             font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: 500;
         }
         
-        .tag-choreo { background: rgba(255, 45, 123, 0.15); color: #ff2d7b; }
-        .tag-transition { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
-        .tag-duet { background: rgba(6, 182, 212, 0.15); color: #06b6d4; }
-        .tag-background { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+        .tag.choreo {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+        }
+        
+        .tag.transition {
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
+        }
+        
+        .tag.duet {
+            background: rgba(255, 45, 123, 0.2);
+            color: #ff2d7b;
+        }
+        
+        .tag.background {
+            background: rgba(250, 204, 21, 0.2);
+            color: #facc15;
+        }
+        
+        .format-list {
+            list-style: none;
+        }
+        
+        .format-item {
+            background: #0f0f14;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-left: 3px solid #a855f7;
+        }
+        
+        .format-item strong {
+            color: #fafafa;
+            font-weight: 600;
+        }
         
         .creator-spotlight {
-            display: grid;
-            gap: 16px;
-        }
-        
-        .creator-card {
-            background: #111115;
-            border: 1px solid #27272a;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(6, 182, 212, 0.1));
             border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+            padding: 24px;
+            border: 1px solid #1a1a24;
         }
         
         .creator-name {
             font-family: 'Syne', sans-serif;
-            font-size: 1.1rem;
-            color: #06b6d4;
-            font-weight: 600;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fafafa;
+            margin-bottom: 8px;
         }
         
         .creator-stats {
-            display: flex;
-            gap: 20px;
-            font-size: 0.9rem;
-            color: #a1a1aa;
-            margin: 8px 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 16px;
         }
         
-        .hashtags {
-            font-size: 0.85rem;
-            color: #71717a;
+        .stat-box {
+            background: #0f0f14;
+            padding: 12px;
+            border-radius: 8px;
+        }
+        
+        .stat-box .label {
+            font-size: 0.75rem;
+            color: #a1a1aa;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-box .value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fafafa;
+            margin-top: 4px;
         }
         
         .ideas-grid {
@@ -180,13 +216,13 @@
         }
         
         .idea-card {
-            background: #111115;
-            border: 2px solid transparent;
-            background-clip: padding-box;
+            background: #0f0f14;
             border-radius: 12px;
             padding: 20px;
             position: relative;
             overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
         }
         
         .idea-card::before {
@@ -202,89 +238,108 @@
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
-            pointer-events: none;
+            opacity: 0.5;
         }
         
         .idea-number {
             font-family: 'Syne', sans-serif;
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 800;
-            color: rgba(168, 85, 247, 0.15);
+            color: #1a1a24;
             line-height: 1;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         .idea-title {
             font-family: 'Syne', sans-serif;
             font-size: 1rem;
+            font-weight: 700;
             color: #fafafa;
             margin-bottom: 12px;
-            font-weight: 600;
         }
         
         .idea-details {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #a1a1aa;
             margin-bottom: 12px;
-            line-height: 1.5;
         }
         
         .idea-why {
             font-size: 0.8rem;
             color: #71717a;
             font-style: italic;
-            border-left: 2px solid #a855f7;
-            padding-left: 10px;
+            line-height: 1.5;
         }
         
         footer {
             text-align: center;
-            padding: 40px 20px 20px;
+            margin-top: 60px;
+            padding: 30px 0;
+            border-top: 1px solid #1a1a24;
             color: #71717a;
             font-size: 0.85rem;
         }
         
-        .footer-text {
-            margin-bottom: 8px;
-            font-weight: 600;
+        footer .powered {
+            font-weight: 500;
+            margin-bottom: 5px;
         }
         
-        .timestamp {
+        footer .timestamp {
             font-size: 0.75rem;
             color: #52525b;
-        }
-        
-        a {
-            color: #06b6d4;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="top-bar"></div>
+    <div class="animated-bar"></div>
     
     <div class="container">
         <header>
             <h1>Dance Trend Digest</h1>
-            <p class="date">January 2025</p>
+            <p class="date">January 14, 2025</p>
         </header>
         
         <section>
             <h2>🎵 Trending Sounds</h2>
             
             <div class="sound-card">
-                <h3>TikTok Dance Challenges</h3>
+                <h3>Lush Life Exchange Challenge</h3>
+                <div class="creator">@aiana_zhakypbekova</div>
                 <div class="stats">
-                    <div class="stat-item">
-                        <span>👁️</span>
-                        <span>214.5B views</span>
-                    </div>
-                    <div class="stat-item">
-                        <span>❤️</span>
-                        <span>12.2M likes</span>
-                    </div>
+                    <span>👁️ 214.5B views</span>
+                    <span>❤️ 682K likes</span>
+                </div>
+                <div class="tags">
+                    <span class="tag choreo">Full Choreo</span>
+                    <span class="tag duet">Duet</span>
+                </div>
+            </div>
+            
+            <div class="sound-card">
+                <h3>Pump It Up Trend</h3>
+                <div class="creator">@brittanyybayybee</div>
+                <div class="stats">
+                    <span>👁️ 16.4B views</span>
+                    <span>❤️ 10.7K likes</span>
+                </div>
+                <div class="tags">
+                    <span class="tag background">Background</span>
+                    <span class="tag duet">Duet</span>
+                </div>
+            </div>
+            
+            <div class="sound-card">
+                <h3>Bola Re Bola</h3>
+                <div class="creator">@nhan.pato</div>
+                <div class="stats">
+                    <span>👁️ 4.6B views</span>
+                    <span>❤️ 47.2M likes</span>
+                </div>
+                <div class="tags">
+                    <span class="tag choreo">Full Choreo</span>
+                </div>
+            </div>
+            
+            <div class="sound-card">
                 
