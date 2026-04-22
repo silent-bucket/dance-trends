@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dance Trend Digest</title>
+    <title>Dance Trend Digest - April 22, 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -15,33 +15,33 @@
         }
         
         body {
-            background: #08080c;
-            color: #e4e4e7;
+            background-color: #08080c;
+            color: #e5e7eb;
             font-family: 'DM Sans', sans-serif;
             line-height: 1.6;
-            padding-bottom: 60px;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 16px;
         }
         
         .animated-bar {
             height: 4px;
             background: linear-gradient(90deg, #ff2d7b, #a855f7, #06b6d4, #ff2d7b);
             background-size: 200% 100%;
-            animation: gradientFlow 3s linear infinite;
+            animation: gradient 3s linear infinite;
         }
         
-        @keyframes gradientFlow {
+        @keyframes gradient {
             0% { background-position: 0% 0%; }
             100% { background-position: 200% 0%; }
         }
         
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
         header {
-            padding: 40px 0 30px;
+            padding: 40px 0 32px;
             text-align: center;
         }
         
@@ -53,33 +53,32 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .date {
-            color: #a1a1aa;
-            font-size: 0.9rem;
-            font-weight: 500;
+            color: #9ca3af;
+            font-size: 0.95rem;
         }
         
         section {
-            margin: 50px 0;
+            margin-bottom: 48px;
         }
         
         h2 {
             font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            color: #fafafa;
+            margin-bottom: 24px;
+            color: #f9fafb;
         }
         
         .sound-card {
-            background: #0f0f14;
+            background: #111116;
+            border: 1px solid #1f1f29;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 16px;
-            border: 1px solid #1a1a24;
             transition: all 0.3s ease;
         }
         
@@ -88,91 +87,117 @@
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
         }
         
-        .sound-card h3 {
-            font-family: 'Syne', sans-serif;
+        .sound-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+        
+        .sound-title {
+            font-weight: 700;
             font-size: 1.1rem;
+            color: #f9fafb;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 600;
-            color: #fafafa;
+            margin-left: 8px;
+        }
+        
+        .tag-choreo {
+            background: rgba(255, 45, 123, 0.2);
+            color: #ff2d7b;
+        }
+        
+        .tag-transition {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+        }
+        
+        .tag-duet {
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
+        }
+        
+        .tag-background {
+            background: rgba(251, 146, 60, 0.2);
+            color: #fb923c;
+        }
+        
+        .sound-stats {
+            color: #9ca3af;
+            font-size: 0.9rem;
             margin-bottom: 8px;
         }
         
-        .sound-card .creator {
+        .sound-creator {
             color: #06b6d4;
             font-weight: 500;
-            margin-bottom: 8px;
         }
         
-        .stats {
-            display: flex;
-            gap: 15px;
-            margin: 10px 0;
-            font-size: 0.85rem;
-            color: #a1a1aa;
-        }
-        
-        .tags {
+        .hashtags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-top: 12px;
         }
         
-        .tag {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
+        .hashtag {
+            background: #1f1f29;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #d1d5db;
         }
         
-        .tag.choreo {
-            background: rgba(168, 85, 247, 0.2);
-            color: #a855f7;
+        .format-grid {
+            display: grid;
+            gap: 16px;
         }
         
-        .tag.transition {
-            background: rgba(6, 182, 212, 0.2);
-            color: #06b6d4;
+        .format-card {
+            background: #111116;
+            border: 1px solid #1f1f29;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
         }
         
-        .tag.duet {
-            background: rgba(255, 45, 123, 0.2);
-            color: #ff2d7b;
+        .format-card:hover {
+            border-color: #ff2d7b;
+            box-shadow: 0 0 20px rgba(255, 45, 123, 0.3);
         }
         
-        .tag.background {
-            background: rgba(250, 204, 21, 0.2);
-            color: #facc15;
+        .format-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #f9fafb;
+            margin-bottom: 8px;
         }
         
-        .format-list {
-            list-style: none;
-        }
-        
-        .format-item {
-            background: #0f0f14;
-            border-radius: 10px;
-            padding: 16px 20px;
-            margin-bottom: 12px;
-            border-left: 3px solid #a855f7;
-        }
-        
-        .format-item strong {
-            color: #fafafa;
-            font-weight: 600;
+        .format-desc {
+            color: #9ca3af;
+            font-size: 0.95rem;
         }
         
         .creator-spotlight {
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(6, 182, 212, 0.1));
+            background: linear-gradient(135deg, rgba(255, 45, 123, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid #a855f7;
             border-radius: 12px;
             padding: 24px;
-            border: 1px solid #1a1a24;
+            margin-bottom: 16px;
         }
         
         .creator-name {
             font-family: 'Syne', sans-serif;
             font-size: 1.3rem;
             font-weight: 700;
-            color: #fafafa;
+            color: #f9fafb;
             margin-bottom: 8px;
         }
         
@@ -183,24 +208,22 @@
             margin-top: 16px;
         }
         
-        .stat-box {
-            background: #0f0f14;
+        .stat-item {
+            background: rgba(17, 17, 22, 0.6);
             padding: 12px;
             border-radius: 8px;
         }
         
-        .stat-box .label {
-            font-size: 0.75rem;
-            color: #a1a1aa;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .stat-label {
+            color: #9ca3af;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
         }
         
-        .stat-box .value {
-            font-size: 1.3rem;
+        .stat-value {
             font-weight: 700;
-            color: #fafafa;
-            margin-top: 4px;
+            font-size: 1.2rem;
+            color: #06b6d4;
         }
         
         .ideas-grid {
@@ -209,14 +232,8 @@
             gap: 16px;
         }
         
-        @media (max-width: 600px) {
-            .ideas-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
         .idea-card {
-            background: #0f0f14;
+            background: #111116;
             border-radius: 12px;
             padding: 20px;
             position: relative;
@@ -242,52 +259,73 @@
         }
         
         .idea-number {
+            position: absolute;
+            top: -10px;
+            right: 10px;
             font-family: 'Syne', sans-serif;
             font-size: 4rem;
             font-weight: 800;
-            color: #1a1a24;
+            color: rgba(168, 85, 247, 0.1);
             line-height: 1;
-            margin-bottom: 10px;
         }
         
         .idea-title {
             font-family: 'Syne', sans-serif;
-            font-size: 1rem;
             font-weight: 700;
-            color: #fafafa;
+            font-size: 1rem;
+            color: #f9fafb;
             margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
         }
         
-        .idea-details {
+        .idea-detail {
             font-size: 0.85rem;
-            color: #a1a1aa;
-            margin-bottom: 12px;
+            color: #9ca3af;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
         }
         
         .idea-why {
-            font-size: 0.8rem;
-            color: #71717a;
             font-style: italic;
-            line-height: 1.5;
+            font-size: 0.85rem;
+            color: #a855f7;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #1f1f29;
+            position: relative;
+            z-index: 1;
         }
         
         footer {
             text-align: center;
-            margin-top: 60px;
-            padding: 30px 0;
-            border-top: 1px solid #1a1a24;
-            color: #71717a;
-            font-size: 0.85rem;
+            padding: 32px 0;
+            color: #6b7280;
+            font-size: 0.9rem;
         }
         
-        footer .powered {
-            font-weight: 500;
-            margin-bottom: 5px;
+        .footer-divider {
+            color: #4b5563;
+            margin: 0 8px;
         }
         
-        footer .timestamp {
-            font-size: 0.75rem;
-            color: #52525b;
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .ideas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .creator-stats {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -297,49 +335,20 @@
     <div class="container">
         <header>
             <h1>Dance Trend Digest</h1>
-            <p class="date">January 14, 2025</p>
+            <p class="date">April 22, 2026</p>
         </header>
         
         <section>
             <h2>🎵 Trending Sounds</h2>
             
             <div class="sound-card">
-                <h3>Lush Life Exchange Challenge</h3>
-                <div class="creator">@aiana_zhakypbekova</div>
-                <div class="stats">
-                    <span>👁️ 214.5B views</span>
-                    <span>❤️ 682K likes</span>
+                <div class="sound-header">
+                    <span class="sound-title">Random Dance Challenge</span>
+                    <span class="tag tag-choreo">Full Choreo</span>
                 </div>
-                <div class="tags">
-                    <span class="tag choreo">Full Choreo</span>
-                    <span class="tag duet">Duet</span>
+                <div class="sound-stats">
+                    <span class="sound-creator">@aeedais</span> • 214.5B views • 12.2M likes
                 </div>
-            </div>
-            
-            <div class="sound-card">
-                <h3>Pump It Up Trend</h3>
-                <div class="creator">@brittanyybayybee</div>
-                <div class="stats">
-                    <span>👁️ 16.4B views</span>
-                    <span>❤️ 10.7K likes</span>
-                </div>
-                <div class="tags">
-                    <span class="tag background">Background</span>
-                    <span class="tag duet">Duet</span>
-                </div>
-            </div>
-            
-            <div class="sound-card">
-                <h3>Bola Re Bola</h3>
-                <div class="creator">@nhan.pato</div>
-                <div class="stats">
-                    <span>👁️ 4.6B views</span>
-                    <span>❤️ 47.2M likes</span>
-                </div>
-                <div class="tags">
-                    <span class="tag choreo">Full Choreo</span>
-                </div>
-            </div>
-            
-            <div class="sound-card">
-                
+                <div class="hashtags">
+                    <span class="hashtag">#tiktokrandomdance</span>
+                    <span class="hashtag">#dancechallenge</span
