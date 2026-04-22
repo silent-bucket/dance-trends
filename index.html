@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trending on TikTok - Dance Teams</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>TikTok Trend Analysis - April 22, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,396 +14,417 @@
         
         body {
             background: #08080c;
-            color: #fff;
+            color: #e8e4df;
             font-family: 'DM Sans', sans-serif;
             line-height: 1.6;
         }
         
-        .gradient-bar {
-            height: 4px;
-            background: linear-gradient(90deg, #ff2d7b, #a855f7, #06B6D4, #ff2d7b);
-            background-size: 200%;
-            animation: gradient 3s linear infinite;
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
+        .top-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #ff2d7b, #a855f7, #06b6d4, #ff2d7b);
+            background-size: 300%;
+            animation: shimmer 3s ease infinite;
         }
         
         .container {
             max-width: 680px;
             margin: 0 auto;
-            padding: 0 20px 60px;
+            padding: 20px;
         }
         
         header {
-            padding: 48px 0 40px;
             text-align: center;
+            margin: 40px 0;
+        }
+        
+        .eyebrow {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            color: #a855f7;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
         }
         
         h1 {
             font-family: 'Syne', sans-serif;
             font-weight: 800;
-            font-size: 48px;
-            background: linear-gradient(135deg, #fff 0%, #c4b5fd 50%, #ff2d7b 100%);
+            font-size: 42px;
+            background: linear-gradient(180deg, white, #c4b5fd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 12px;
-        }
-        
-        .subtitle {
-            color: #a0a0aa;
-            font-size: 16px;
-            margin-bottom: 16px;
-        }
-        
-        .date-pill {
-            display: inline-block;
-            background: rgba(168, 85, 247, 0.15);
-            color: #a855f7;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        h2 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 28px;
-            margin: 48px 0 24px;
-            color: #fff;
-        }
-        
-        .video-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .video-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(168, 85, 247, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        .creator-handle {
-            color: #a855f7;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-        
-        .creator-handle:hover {
-            color: #c084fc;
-        }
-        
-        .stats {
-            display: flex;
-            gap: 24px;
-            margin: 12px 0 16px;
-            color: #a0a0aa;
-            font-size: 14px;
-        }
-        
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .watch-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff2d7b, #a855f7);
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        
-        .watch-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(255, 45, 123, 0.3);
-        }
-        
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .content-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 20px;
-        }
-        
-        .content-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-        
-        .content-label {
-            color: #a0a0aa;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 12px;
-            margin-bottom: 4px;
-        }
-        
-        .content-value {
-            color: #fff;
-            font-size: 14px;
             margin-bottom: 8px;
         }
         
-        .hashtags {
-            color: #06B6D4;
-            font-size: 13px;
-            margin-top: 8px;
+        .subtitle {
+            color: rgba(255,255,255,0.5);
+            font-size: 16px;
+            margin-bottom: 8px;
         }
         
-        .example-link {
-            color: #a855f7;
-            text-decoration: none;
-            font-size: 13px;
-            margin-top: 12px;
-            display: inline-block;
+        .date {
+            color: rgba(255,255,255,0.4);
+            font-size: 14px;
         }
         
-        .example-link:hover {
-            color: #c084fc;
+        .section {
+            margin: 48px 0;
         }
         
-        .format-list {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 24px;
-        }
-        
-        .format-item {
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .section-header {
             display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .section-icon {
+            font-size: 44px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+        }
+        
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .video-card {
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            margin-bottom: 12px;
+            transition: border 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .video-card:hover {
+            border-color: rgba(168,85,247,0.3);
+        }
+        
+        .video-creator {
+            color: #c084fc;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .video-stats {
+            display: flex;
+            gap: 16px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.35);
+        }
+        
+        .ideas-grid {
+            display: grid;
             gap: 16px;
         }
         
-        .format-item:last-child {
-            border-bottom: none;
+        @media (min-width: 640px) {
+            .ideas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
-        .format-number {
+        .idea-card {
+            padding: 18px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(168,85,247,0.06), rgba(255,45,123,0.04));
+            border: 1px solid rgba(168,85,247,0.12);
+            position: relative;
+        }
+        
+        .idea-number {
             font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            color: #a855f7;
-            min-width: 30px;
+            font-weight: 800;
+            font-size: 32px;
+            color: rgba(168,85,247,0.2);
+            position: absolute;
+            top: 12px;
+            right: 16px;
+        }
+        
+        .idea-concept {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .idea-detail {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 6px;
+        }
+        
+        .idea-detail strong {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .idea-why {
+            font-style: italic;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 12px;
+        }
+        
+        .hashtag {
+            display: inline-block;
+            color: #22d3ee;
+            background: rgba(6,182,212,0.08);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-right: 6px;
+            margin-top: 6px;
+        }
+        
+        .format-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .format-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
         }
         
         .format-content {
             flex: 1;
         }
         
+        .format-name {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .format-description {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+        
         .sound-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            margin-bottom: 12px;
+            transition: border 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .sound-card:hover {
+            border-color: rgba(168,85,247,0.3);
+        }
+        
+        .sound-creator {
+            color: #c084fc;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .sound-description {
+            margin-bottom: 12px;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
         }
         
         .tags {
             display: flex;
-            flex-wrap: wrap;
             gap: 8px;
-            margin-top: 12px;
+            flex-wrap: wrap;
         }
         
         .tag {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
         }
         
-        .tag-pink {
-            background: rgba(255, 45, 123, 0.2);
-            color: #ff2d7b;
+        .tag-full {
+            background: rgba(255,92,154,0.15);
+            color: #ff5c9a;
         }
         
-        .tag-purple {
-            background: rgba(168, 85, 247, 0.2);
-            color: #a855f7;
+        .tag-transition {
+            background: rgba(34,211,238,0.15);
+            color: #22d3ee;
         }
         
-        .tag-cyan {
-            background: rgba(6, 182, 212, 0.2);
-            color: #06B6D4;
-        }
-        
-        .creator-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-        
-        .creator-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .creator-card a {
-            color: #a855f7;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-        }
-        
-        .creator-card a:hover {
+        .tag-background {
+            background: rgba(192,132,252,0.15);
             color: #c084fc;
         }
         
-        .view-count {
-            color: #a0a0aa;
+        .tag-duet {
+            background: rgba(251,191,36,0.15);
+            color: #fbbf24;
+        }
+        
+        .creator-item {
+            padding: 16px 18px;
+            border-left: 3px solid rgba(168,85,247,0.5);
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+        
+        .creator-handle {
+            color: #c084fc;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .creator-handle:hover {
+            text-decoration: underline;
+        }
+        
+        .creator-description {
+            margin-bottom: 8px;
             font-size: 14px;
-            margin-top: 8px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .creator-stats {
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
         }
         
         footer {
             text-align: center;
-            margin-top: 64px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            color: #a0a0aa;
-            font-size: 14px;
-        }
-        
-        @media (max-width: 640px) {
-            h1 {
-                font-size: 36px;
-            }
-            
-            h2 {
-                font-size: 24px;
-            }
-            
-            .content-grid, .creator-grid {
-                grid-template-columns: 1fr;
-            }
+            margin: 60px 0 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.2);
+            font-size: 13px;
         }
     </style>
 </head>
 <body>
-    <div class="gradient-bar"></div>
+    <div class="top-bar"></div>
     
     <div class="container">
         <header>
+            <div class="eyebrow">Daily Briefing</div>
             <h1>Trending on TikTok</h1>
-            <p class="subtitle">For dance teams</p>
-            <span class="date-pill">April 22, 2026</span>
+            <div class="subtitle">For dance teams</div>
+            <div class="date">April 22, 2026</div>
         </header>
         
-        <section>
-            <h2>Top Trending Videos</h2>
-            
-            <div class="video-card">
-                <a href="https://www.tiktok.com/@aeedais" class="creator-handle">@aeedais</a>
-                <div class="stats">
-                    <span class="stat-item">👁️ 214.5B views</span>
-                    <span class="stat-item">❤️ 12.2M likes</span>
-                </div>
-                <a href="https://www.tiktok.com/@aeedais/video/7629374797251628310" class="watch-btn">Watch</a>
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">📱</div>
+                <div class="section-title">Top Trending Videos</div>
             </div>
             
-            <div class="video-card">
-                <a href="https://www.tiktok.com/@rhythm_attack_" class="creator-handle">@rhythm_attack_</a>
-                <div class="stats">
-                    <span class="stat-item">👁️ 214.5B views</span>
-                    <span class="stat-item">❤️ 37.1M likes</span>
+            <a href="https://www.tiktok.com/@dexterroach1/video/7630386197000408342" class="video-card">
+                <div class="video-creator">@dexterroach1</div>
+                <div class="video-stats">
+                    <span>👁️ 1.7T views</span>
+                    <span>❤️ 1.9K likes</span>
                 </div>
-                <a href="https://www.tiktok.com/@rhythm_attack_/video/7630553012431260960" class="watch-btn">Watch</a>
+            </a>
+            
+            <a href="https://www.tiktok.com/@aeedais/video/7629374797251628310" class="video-card">
+                <div class="video-creator">@aeedais</div>
+                <div class="video-stats">
+                    <span>👁️ 214.5B views</span>
+                    <span>❤️ 12.2M likes</span>
+                </div>
+            </a>
+            
+            <a href="https://www.tiktok.com/@rhythm_attack_/video/7630553012431260960" class="video-card">
+                <div class="video-creator">@rhythm_attack_</div>
+                <div class="video-stats">
+                    <span>👁️ 214.5B views</span>
+                    <span>❤️ 37.1M likes</span>
+                </div>
+            </a>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">💡</div>
+                <div class="section-title">Content Ideas</div>
             </div>
             
-            <div class="video-card">
-                <a href="https://www.tiktok.com/@91miuty" class="creator-handle">@91miuty</a>
-                <div class="stats">
-                    <span class="stat-item">👁️ 214.5B views</span>
-                    <span class="stat-item">❤️ 15.4M likes</span>
+            <div class="ideas-grid">
+                <div class="idea-card">
+                    <div class="idea-number">1</div>
+                    <div class="idea-concept">Random Dance Challenge Mashup</div>
+                    <div class="idea-detail"><strong>Sound:</strong> Trending TikTok dance audio mix</div>
+                    <div class="idea-detail"><strong>Format:</strong> Full team choreo with quick transitions</div>
+                    <div class="idea-detail"><strong>Length:</strong> 45-60 seconds</div>
+                    <div class="hashtag">#tiktokrandomdance</div>
+                    <div class="hashtag">#dancechallenge</div>
+                    <div class="hashtag">#danceteam</div>
+                    <div class="idea-why">Why it works: Random dance challenges are exploding with 214.5B+ views - perfect for showcasing your team's versatility and quick learning ability</div>
                 </div>
-                <a href="https://www.tiktok.com/@91miuty/video/7630427044651879698" class="watch-btn">Watch</a>
+                
+                <div class="idea-card">
+                    <div class="idea-number">2</div>
+                    <div class="idea-concept">Hip Hop Competition Routine Snippet</div>
+                    <div class="idea-detail"><strong>Sound:</strong> High-energy hip hop track</div>
+                    <div class="idea-detail"><strong>Format:</strong> 8-count power section with synchronization</div>
+                    <div class="idea-detail"><strong>Length:</strong> 30 seconds</div>
+                    <div class="hashtag">#hiphopdance</div>
+                    <div class="hashtag">#danceteam</div>
+                    <div class="hashtag">#dancecompetition</div>
+                    <div class="idea-why">Why it works: Hip hop dance teams are trending massively - Royal Family and other crews driving 4.6B+ views with clean, synchronized routines</div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-number">3</div>
+                    <div class="idea-concept">Behind-the-Scenes Competition Prep</div>
+                    <div class="idea-detail"><strong>Sound:</strong> Trending audio with voiceover</div>
+                    <div class="idea-detail"><strong>Format:</strong> Quick transitions showing rehearsal to performance</div>
+                    <div class="idea-detail"><strong>Length:</strong> 20-30 seconds</div>
+                    <div class="hashtag">#dancecompetition</div>
+                    <div class="hashtag">#dancetok</div>
+                    <div class="hashtag">#competitivedance</div>
+                    <div class="idea-why">Why it works: Audiences love seeing the process - getting ready content and competition transitions are getting massive engagement across multiple dance teams</div>
+                </div>
             </div>
         </section>
         
-        <section>
-            <h2>Content Ideas</h2>
-            <div class="content-grid">
-                <div class="content-card">
-                    <h3>Random Dance Challenge</h3>
-                    <p class="content-label">Sound</p>
-                    <p class="content-value">Trending mix compilation</p>
-                    <p class="content-label">Format</p>
-                    <p class="content-value">Team performs multiple dance trends in sequence</p>
-                    <p class="content-label">Hashtags</p>
-                    <p class="hashtags">#tiktokrandomdance #dancechallenge</p>
-                    <p class="content-label">Why it works</p>
-                    <p class="content-value">Showcases versatility and synchronization</p>
-                    <a href="https://www.tiktok.com/@aeedais/video/7629374797251628310" class="example-link">See example →</a>
-                </div>
-                
-                <div class="content-card">
-                    <h3>Hip Hop Team Routine</h3>
-                    <p class="content-label">Sound</p>
-                    <p class="content-value">Hip hop beats</p>
-                    <p class="content-label">Format</p>
-                    <p class="content-value">Professional group choreography with formation changes</p>
-                    <p class="content-label">Hashtags</p>
-                    <p class="hashtags">#hiphopdance #danceteam #groupdance</p>
-                    <p class="content-label">Why it works</p>
-                    <p class="content-value">High energy, shows professional skills and teamwork</p>
-                    <a href="https://www.tiktok.com/@layla_.mckenzie/video/7481111600754085163" class="example-link">See example →</a>
-                </div>
-                
-                <div class="content-card">
-                    <h3>Dance Competition Content</h3>
-                    <p class="content-label">Sound</p>
-                    <p class="content-value">Competition performance audio</p>
-                    <p class="content-label">Format</p>
-                    <p class="content-value">Behind-the-scenes and performance clips from competitions</p>
-                    <p class="content-label">Hashtags</p>
-                    <p class="hashtags">#dancecompetition #danceteam #udanationals</p>
-                    <p class="content-label">Why it works</p>
-                    <p class="content-value">Creates anticipation and showcases achievements</p>
-                    <a href="https://www.tiktok.com/@tribe99official/video/7596894439939853599" class="example-link">See example →</a>
-                </div>
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🔥</div>
+                <div class="section-title">Trending Formats</div>
             </div>
-        </section>
-        
-        <section>
-            <h2>Trending Formats</h2>
-            <div class="format-list">
-                <div class="format-item">
-                    <div class="format-number">1</div>
-                    <div class="format-content">
-                        <strong>Synchronized Team Challenges</strong>
-                        <p style="color: #a0a0aa; font-size: 14px; margin-top: 4px;">Multiple dancers performing the same choreography in perfect sync</p>
-                    
+            
+            <div class="format-item">
+                <div class="format-dot" style="background: #ff5c9a;"></div>
+                <div class="format-content">
+                    <div class="format-name">Synchronized Dance Challenges
