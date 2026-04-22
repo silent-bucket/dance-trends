@@ -6,7 +6,7 @@
     <title>Dance Trend Digest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,23 +15,23 @@
         }
         
         body {
-            background: #08080c;
+            background-color: #08080c;
             color: white;
             font-family: 'DM Sans', sans-serif;
             line-height: 1.6;
         }
         
-        .gradient-bar {
-            height: 6px;
-            background: linear-gradient(90deg, #ff2d7b, #a855f7, #06b6d4);
-            background-size: 200% 200%;
-            animation: gradientShift 3s ease infinite;
-        }
-        
-        @keyframes gradientShift {
+        @keyframes gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+        
+        .top-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #ff2d7b, #a855f7, #06b6d4, #ff2d7b);
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
         }
         
         .container {
@@ -40,57 +40,73 @@
             padding: 20px;
         }
         
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
         h1 {
             font-family: 'Syne', sans-serif;
             font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #ff2d7b, #a855f7, #06b6d4);
+            background: linear-gradient(90deg, #ff2d7b, #a855f7, #06b6d4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin: 30px 0 10px 0;
+            margin-bottom: 10px;
         }
         
         .date {
-            color: #a0a0a0;
+            color: #999;
             font-size: 0.95rem;
-            margin-bottom: 40px;
         }
         
         h2 {
             font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
             margin: 40px 0 20px 0;
-            color: #fff;
+            font-weight: 700;
         }
         
-        .sound-card {
-            background: rgba(255, 255, 255, 0.05);
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.2);
         }
         
         .sound-name {
+            font-size: 1.2rem;
             font-weight: 700;
-            font-size: 1.1rem;
             margin-bottom: 8px;
         }
         
         .creator {
             color: #a855f7;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
         }
         
         .stats {
             display: flex;
             gap: 20px;
-            margin-bottom: 12px;
+            margin: 10px 0;
             font-size: 0.9rem;
-            color: #b0b0b0;
+            color: #ccc;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         .tags {
@@ -101,20 +117,21 @@
         }
         
         .tag {
-            background: rgba(168, 85, 247, 0.2);
-            color: #a855f7;
+            background: rgba(255, 45, 123, 0.15);
+            color: #ff2d7b;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
+            font-weight: 500;
         }
         
-        .tag.pink {
-            background: rgba(255, 45, 123, 0.2);
-            color: #ff2d7b;
+        .tag.purple {
+            background: rgba(168, 85, 247, 0.15);
+            color: #a855f7;
         }
         
         .tag.cyan {
-            background: rgba(6, 182, 212, 0.2);
+            background: rgba(6, 182, 212, 0.15);
             color: #06b6d4;
         }
         
@@ -123,175 +140,256 @@
             text-decoration: none;
         }
         
-        .creator a {
-            color: #a855f7;
-        }
-        
-        .sound-name a {
-            color: #06b6d4;
+        a:hover {
+            opacity: 0.8;
         }
         
         .format-list {
             list-style: none;
+            padding-left: 0;
         }
         
         .format-list li {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 16px;
-            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px 20px;
+            margin-bottom: 10px;
             border-radius: 8px;
             border-left: 3px solid #ff2d7b;
         }
         
         .creator-highlight {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 18px;
-            margin-bottom: 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
         }
         
         .creator-name {
             font-weight: 700;
-            font-size: 1.05rem;
             color: #06b6d4;
-            margin-bottom: 8px;
+            font-size: 1.1rem;
         }
         
         .creator-stats {
-            color: #b0b0b0;
+            text-align: right;
             font-size: 0.9rem;
+            color: #999;
         }
         
         .idea-card {
             background: linear-gradient(135deg, rgba(255, 45, 123, 0.1), rgba(168, 85, 247, 0.1));
-            border: 1px solid rgba(168, 85, 247, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 24px;
             margin-bottom: 20px;
         }
         
         .idea-title {
+            font-size: 1.3rem;
             font-weight: 700;
-            font-size: 1.15rem;
             margin-bottom: 12px;
-            color: #fff;
+            color: #ff2d7b;
         }
         
         .idea-detail {
-            margin-bottom: 10px;
+            margin: 8px 0;
             font-size: 0.95rem;
         }
         
-        .idea-label {
+        .idea-detail strong {
             color: #a855f7;
-            font-weight: 600;
-        }
-        
-        .example-link {
-            display: inline-block;
-            margin-top: 12px;
-            color: #06b6d4;
-            font-weight: 600;
         }
         
         footer {
             text-align: center;
-            margin: 60px 0 30px 0;
-            color: #707070;
+            padding: 40px 0;
+            color: #666;
             font-size: 0.9rem;
         }
         
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
             }
             
             h2 {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
             
             .container {
-                padding: 16px;
+                padding: 15px;
             }
             
             .stats {
                 flex-direction: column;
-                gap: 6px;
+                gap: 5px;
+            }
+            
+            .creator-highlight {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .creator-stats {
+                text-align: left;
             }
         }
     </style>
 </head>
 <body>
-    <div class="gradient-bar"></div>
+    <div class="top-bar"></div>
     
     <div class="container">
-        <h1>Dance Trend Digest</h1>
-        <div class="date">April 22, 2026</div>
+        <header>
+            <h1>Dance Trend Digest</h1>
+            <div class="date">April 22, 2026</div>
+        </header>
         
-        <h2>🔥 Trending Sounds</h2>
+        <section>
+            <h2>🔥 Trending Sounds</h2>
+            
+            <div class="card">
+                <div class="sound-name"><a href="https://www.tiktok.com/@layla_.mckenzie/video/7481111600754085163" target="_blank">Royal Family Hip-Hop Beats</a></div>
+                <a href="https://www.tiktok.com/@layla_.mckenzie" target="_blank" class="creator">@layla_.mckenzie</a>
+                <div class="stats">
+                    <div class="stat-item">👁️ 4.6B views</div>
+                    <div class="stat-item">❤️ 397.5M likes</div>
+                </div>
+                <div class="tags">
+                    <span class="tag">#royalfamily</span>
+                    <span class="tag purple">#hiphopdance</span>
+                    <span class="tag cyan">#danceteam</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="sound-name"><a href="https://www.tiktok.com/@chioma.naledi/video/7630565532336393490" target="_blank">Viral Dance Track</a></div>
+                <a href="https://www.tiktok.com/@chioma.naledi" target="_blank" class="creator">@chioma.naledi</a>
+                <div class="stats">
+                    <div class="stat-item">👁️ 16.4B views</div>
+                    <div class="stat-item">❤️ 50.3M likes</div>
+                </div>
+                <div class="tags">
+                    <span class="tag">#dancetok</span>
+                    <span class="tag purple">#fyp</span>
+                    <span class="tag cyan">#relatable</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="sound-name"><a href="https://www.tiktok.com/@aeedais/video/7629374797251628310" target="_blank">TikTok Random Dance Mix</a></div>
+                <a href="https://www.tiktok.com/@aeedais" target="_blank" class="creator">@aeedais</a>
+                <div class="stats">
+                    <div class="stat-item">👁️ 214.5B views</div>
+                    <div class="stat-item">❤️ 12.2M likes</div>
+                </div>
+                <div class="tags">
+                    <span class="tag">#tiktokrandomdance</span>
+                    <span class="tag purple">#dancechallenge</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="sound-name"><a href="https://www.tiktok.com/@rhythm_attack_/video/7630553012431260960" target="_blank">Rhythm Attack Beat</a></div>
+                <a href="https://www.tiktok.com/@rhythm_attack_" target="_blank" class="creator">@rhythm_attack_</a>
+                <div class="stats">
+                    <div class="stat-item">👁️ 214.5B views</div>
+                    <div class="stat-item">❤️ 37.1M likes</div>
+                </div>
+                <div class="tags">
+                    <span class="tag">#tiktokdance</span>
+                    <span class="tag purple">#dancetrend</span>
+                    <span class="tag cyan">#dancechallenge</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="sound-name"><a href="https://www.tiktok.com/@diannetrixie_/video/7630344617724103944" target="_blank">Trending Audio</a></div>
+                <a href="https://www.tiktok.com/@diannetrixie_" target="_blank" class="creator">@diannetrixie_</a>
+                <div class="stats">
+                    <div class="stat-item">👁️ 1.67T views</div>
+                    <div class="stat-item">❤️ 61.8M likes</div>
+                </div>
+                <div class="tags">
+                    <span class="tag">#trending</span>
+                    <span class="tag purple">#viral</span>
+                </div>
+            </div>
+        </section>
         
-        <div class="sound-card">
-            <div class="sound-name"><a href="https://www.tiktok.com/@rhythm_attack_/video/7630553012431260960" target="_blank">High Energy Hip Hop Mix</a></div>
-            <div class="creator">by <a href="https://www.tiktok.com/@rhythm_attack_" target="_blank">@rhythm_attack_</a></div>
-            <div class="stats">
-                <span>📊 214.5B views</span>
-                <span>❤️ 37.1M likes</span>
-            </div>
-            <div class="tags">
-                <span class="tag pink">dancechallenge</span>
-                <span class="tag">tiktokdance</span>
-                <span class="tag cyan">dancetrend</span>
-            </div>
-        </div>
+        <section>
+            <h2>📈 Trending Formats</h2>
+            <ul class="format-list">
+                <li><strong>Random Dance Medleys</strong> - Quick transitions between multiple trending choreos in one video</li>
+                <li><strong>Dance Competition BTS</strong> - Behind-the-scenes content from dance competitions gaining massive traction</li>
+                <li><strong>Hip-Hop Group Routines</strong> - Synchronized team performances with sharp formations</li>
+                <li><strong>Mother-Daughter Dance Duos</strong> - Family dance content showing cross-generational appeal</li>
+                <li><strong>Choreography Tutorials</strong> - Step-by-step breakdowns of viral dances with mirrored angles</li>
+                <li><strong>College Dance Team Showcases</strong> - UDA nationals and collegiate dance performances</li>
+                <li><strong>Heels Choreography</strong> - High-energy routines in heels gaining popularity</li>
+                <li><strong>International Dance Styles</strong> - Afrobeats, K-pop inspired moves, and global fusion</li>
+            </ul>
+        </section>
         
-        <div class="sound-card">
-            <div class="sound-name"><a href="https://www.tiktok.com/@layla_.mckenzie/video/7481111600754085163" target="_blank">Royal Family Dance Crew Mix</a></div>
-            <div class="creator">by <a href="https://www.tiktok.com/@layla_.mckenzie" target="_blank">@layla_.mckenzie</a></div>
-            <div class="stats">
-                <span>📊 4.6B views</span>
-                <span>❤️ 397.5M likes</span>
+        <section>
+            <h2>⭐ Creator Highlights</h2>
+            
+            <div class="creator-highlight">
+                <div>
+                    <a href="https://www.tiktok.com/@layla_.mckenzie" target="_blank" class="creator-name">@layla_.mckenzie</a>
+                </div>
+                <div class="creator-stats">
+                    7,134 videos | 397.5M likes<br>
+                    Royal Family Dance Crew
+                </div>
             </div>
-            <div class="tags">
-                <span class="tag pink">hiphopdance</span>
-                <span class="tag">danceteam</span>
-                <span class="tag cyan">groupdance</span>
+            
+            <div class="creator-highlight">
+                <div>
+                    <a href="https://www.tiktok.com/@diannetrixie_" target="_blank" class="creator-name">@diannetrixie_</a>
+                </div>
+                <div class="creator-stats">
+                    749 videos | 61.8M likes<br>
+                    Viral Dance Creator
+                </div>
             </div>
-        </div>
-        
-        <div class="sound-card">
-            <div class="sound-name"><a href="https://www.tiktok.com/@91miuty/video/7630427044651879698" target="_blank">Trending OOTD Dance Track</a></div>
-            <div class="creator">by <a href="https://www.tiktok.com/@91miuty" target="_blank">@91miuty</a></div>
-            <div class="stats">
-                <span>📊 214.5B views</span>
-                <span>❤️ 15.4M likes</span>
+            
+            <div class="creator-highlight">
+                <div>
+                    <a href="https://www.tiktok.com/@chioma.naledi" target="_blank" class="creator-name">@chioma.naledi</a>
+                </div>
+                <div class="creator-stats">
+                    1,067 videos | 50.3M likes<br>
+                    Dance Trend Leader
+                </div>
             </div>
-            <div class="tags">
-                <span class="tag pink">trending</span>
-                <span class="tag">ootd</span>
-                <span class="tag cyan">fyp</span>
+            
+            <div class="creator-highlight">
+                <div>
+                    <a href="https://www.tiktok.com/@nhan.pato" target="_blank" class="creator-name">@nhan.pato</a>
+                </div>
+                <div class="creator-stats">
+                    1,246 videos | 47.2M likes<br>
+                    BN Dance Team
+                </div>
             </div>
-        </div>
-        
-        <div class="sound-card">
-            <div class="sound-name"><a href="https://www.tiktok.com/@chioma.naledi/video/7630565532336393490" target="_blank">Viral Dance Beat</a></div>
-            <div class="creator">by <a href="https://www.tiktok.com/@chioma.naledi" target="_blank">@chioma.naledi</a></div>
-            <div class="stats">
-                <span>📊 16.4B views</span>
-                <span>❤️ 50.3M likes</span>
+            
+            <div class="creator-highlight">
+                <div>
+                    <a href="https://www.tiktok.com/@idsam_1" target="_blank" class="creator-name">@idsam_1</a>
+                </div>
+                <div class="creator-stats">
+                    3,116 videos | 44.9M likes<br>
+                    Vibe & Trend Specialist
+                </div>
             </div>
-            <div class="tags">
-                <span class="tag pink">dancetok</span>
-                <span class="tag">fyp</span>
-                <span class="tag cyan">relatable</span>
-            </div>
-        </div>
-        
-        <h2>📈 Trending Formats</h2>
-        
-        <ul class="format-list">
-            <li><strong>TikTok Random Dance Challenge</strong> - High-energy compilation format where creators switch between multiple trending dances in quick succession</li>
-            <li><strong>Dance Team Showcases</strong> - Group synchronization videos featuring competitive dance teams and crews, especially hip hop and college dance squads</li>
-            <li><strong>Duo Dance Trends</strong> - Partner choreography gaining massive traction, featuring mother-daughter duos and friend collaborations</li>
-            <li><strong>Competition Performance POVs</strong> - Behind-the-scenes and getting-ready content from dance competitions</li>
-            <li><strong>Bend Dance Challenge
+            
+            <div class="creator-highlight">
+                <div>
+                    <a href="https://www.tiktok.com/@rhythm_attack_" target="_blank" class="creator-name">@rhythm_attack_</a>
+                </div>
+                <div class="
